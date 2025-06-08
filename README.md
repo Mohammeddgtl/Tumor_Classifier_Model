@@ -4,7 +4,7 @@ This Is My First Trained Model Using Scikit-learn (LogisticRegression)
 
 I Dont KNow How To Start So HERE WE GO AGAIN!
 
-Liberaries:
+libraries:
 
 ```python
 import sklearn as sk
@@ -29,5 +29,29 @@ I Used Dataset From [Kaggle](https://www.kaggle.com)
 
 Don't Know Why He Thinks Cancer Is "INTERESTING" Thing To Happen!
 
-cancer_df.head():
+cancer_df.head(5): Cant fit All Columns
+
+![Check The ScreenShot Folder, If Not Loaded](ScreenShot/Cancer.head().png)
+
+
+All The Features From Cancer.csv
+```python
+Id, Diagnosis, Radius (mean), Texture (mean), Perimeter (mean)
+
+Area (mean), Smoothness (mean), Compactness (mean), Concavity (mean)
+
+Concave points (mean), Symmetry (mean), Fractal dimension (mean)
+
+Radius (se), Texture (se), Perimeter (se), Area (se)
+
+Smoothness (se), Compactness (se), Concavity (se), Concave points (se)
+
+Symmetry (se), Fractal dimension (se)
+
+Radius (worst), Texture (worst), Perimeter (worst), Area (worst)
+
+Smoothness (worst), Compactness (worst), Concavity (worst)
+
+Concave points (worst), Symmetry (worst), Fractal dimension (worst)
+```
 
