@@ -34,7 +34,7 @@ cancer_df.head(5): Cant fit All Columns
 ![Check The ScreenShot Folder, If Not Loaded](ScreenShot/Cancer.head().png)
 
 
-All The Features From Cancer.csv
+All The Features From Cancer.csv - (569, 32)
 ```python
 Id, Diagnosis, Radius (mean), Texture (mean), Perimeter (mean)
 
@@ -54,4 +54,102 @@ Smoothness (worst), Compactness (worst), Concavity (worst)
 
 Concave points (worst), Symmetry (worst), Fractal dimension (worst)
 ```
+# Data Visualization: 
+Now We Need Impotant Features To Predict Tumor Classifiaction:
+
+  *in This Dataset We Have Column 'DIAGNOSIS' It's  Value Is Either M OR B [M: Malignant (cancer), B: Benign (not cancer)]
+
+
+Before We Plot Our Heatmap, We Need To Convert The String Values To Int/Float. 
+
+So We Could Use Panda To Change M : 1 AND B : 0
+
+```python
+
+Cancer_df["Diagnosis"] = Cancer_df["Diagnosis"].replace("M", 1)
+Cancer_df["Diagnosis"] = Cancer_df["Diagnosis"].replace("B", 0)
+
+```
+
+Lets Plot The HeatMap - Correlation Between Features and Lable/Target(Diagnosis):
+
+```python
+
+plt.figure(figsize=(30, 40))  
+corr = Cancer_df.corr(numeric_only= True)
+sns.heatmap(corr, annot = True, cmap = "coolwarm")
+plt.title("Heatmap")
+plt.show()
+
+```
+
+![Check The ScreenShot Folder, If Not Loaded](ScreenShot/Correlation.png)
+
+__BOO!__ - Scary Right?
+
+Actually We Don't Need To Understand Whole CorrelationMap But The Target (Diagnosis) -
+
+![Check The ScreenShot Folder, If Not Loaded](ScreenShot/IMP_Correlation.png)
+
+little Explaination: Heatmap Range is from 1 to -1, So 
+      
+      if the Correlation > 0 means if that feature increases the Traget increses - Vise Versa
+      
+      if the Correlation == 0 means No Relation 
+      
+      if the Correlation < 0 means if that feature decreases the Traget increses - Vise Versa
+
+
+Hmm... Looks Like index (2,4,5,8,9,23,25,26,30 - Whole Numbers) are important for Our Training.
+
+Create X For Training Our Model:
+
+```python
+Imp_X = Cancer_df.columns[[2,4,5,8,9,23,25,26,30]]
+X = iris[Imp_X]
+X
+```
+
+![Check The ScreenShot Folder, If Not Loaded](ScreenShot/IMP_x.png)
+
+Create y For Training Our Model - Diagnosis
+
+```python
+
+y_train = iris['Diagnosis']
+y_train
+
+```
+![Check The ScreenShot Folder, If Not Loaded](ScreenShot/y_train.png)
+
+But Before We Train Our Model, Why Dont We Look at Our Data(Features):
+![Check The ScreenShot Folder, If Not Loaded](ScreenShot/df_inspect.png)
+
+At First Sight It looks pretty good, until you look at the Y-axis.
+Most of the data is in range from 1-200 but some of them are from 1000-4000,
+They Are '__Outliers__' And They Make Our Model Go Out Of Their Mind.
+
+So Here Comes The Preprocessing!
+
+# Preprosessing
+
+
+
+
+
+
+
+
+
+      
+
+
+
+
+
+
+
+
+
+
 
