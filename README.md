@@ -259,15 +259,31 @@ __Ist Try__
 
 ![Check ScreenShot Folder, If Not Loaded](ScreenShot/T_S1.png)
 
+__Accuracy__ = 111/114 = 97.4%
+
 __IInd Try__
 
 ![Check ScreenShot Folder, If Not Loaded](ScreenShot/T_S2.png)
+
+__Accuracy__ = 111/114 = 97.4%
 
 __IIIrd Try__
 
 ![Check ScreenShot Folder, If Not Loaded](ScreenShot/T_S3.png)
 
+__Accuracy__ = 110/114 = 96.5%
 
+
+Avg_Accuracy = (97.4 + 97.4 + 96.5)/3 = 97%
+
+
+# Additional
+
+This Model Still Lacks by 3%.
+
+So, Is This The Best Model - NO!
+
+Will I Work On It - Yes! 
 
 
 
