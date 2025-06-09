@@ -21,6 +21,7 @@ from sklearn.preprocessing import StandardScaler
 from sklearn.linear_model import LogisticRegression
 from sklearn.pipeline import make_pipeline
 from sklearn.metrics import confusion_matrix, ConfusionMatrixDisplay
+from sklearn.model_selection import train_test_split
 ```
 
 I Used Dataset From [Kaggle](https://www.kaggle.com)
@@ -230,7 +231,41 @@ __F1 Score = 2 * (Precision * Recall) / (Precision + Recall)__
            = 2 * (97.6 * 96.2) / (97.6 + 96.2)
            = 96.9%
       
+# Train/Split test
 
+This Will Split Data Into Testing and Training So it's not Like That I am Feeding My Model The Actual Predictions
+
+```python
+
+X_train, X_test, y_train, y_test = train_test_split(X, y_train, test_size=0.2, random_state=42)
+
+pipe.fit(X_train, y_train)
+y_pred = pipe.predict(X_test)
+
+```
+
+Let's Plot The Confusion Matrix: 
+
+```python
+
+cm = confusion_matrix(y_test,y_pred)
+disp = ConfusionMatrixDisplay(confusion_matrix=cm)
+disp.plot()
+plt.title("Confusion Matrix")
+plt.show()
+
+```
+__Ist Try__
+
+![Check ScreenShot Folder, If Not Loaded](ScreenShot/T_S1.png)
+
+__IInd Try__
+
+![Check ScreenShot Folder, If Not Loaded](ScreenShot/T_S2.png)
+
+__IIIrd Try__
+
+![Check ScreenShot Folder, If Not Loaded](ScreenShot/T_S3.png)
 
 
 
