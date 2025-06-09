@@ -54,7 +54,7 @@ Smoothness (worst), Compactness (worst), Concavity (worst)
 
 Concave points (worst), Symmetry (worst), Fractal dimension (worst)
 ```
-# Data Visualization: 
+# Data Visualization 
 Now We Need Impotant Features To Predict Tumor Classifiaction:
 
   *in This Dataset We Have Column 'DIAGNOSIS' It's  Value Is Either M OR B [M: Malignant (cancer), B: Benign (not cancer)]
@@ -91,7 +91,7 @@ Actually We Don't Need To Understand Whole CorrelationMap But The Target (Diagno
 
 ![Check The ScreenShot Folder, If Not Loaded](ScreenShot/IMP_Correlation.png)
 
-little Explaination: Heatmap Range is from 1 to -1, So 
+Little Explaination: Heatmap Range is from 1 to -1, So 
       
       if the Correlation > 0 means if that feature increases the Traget increses - Vise Versa
       
@@ -132,6 +132,105 @@ They Are '__Outliers__' And They Make Our Model Go Out Of Their Mind.
 So Here Comes The Preprocessing!
 
 # Preprosessing
+
+We Will Be Using '__StandardScaler()__'
+
+e.g. 
+
+```python
+
+X_Flitered = StandardScaler().fit(X).transform(X)
+plt.figure(figsize=(14, 6))
+sns.boxplot(data=X_Filtered)
+plt.xticks(rotation=45)
+plt.title("Box Plot for Outlier Detection")
+plt.tight_layout()
+plt.show()
+
+```
+
+![Check The ScreenShot Folder, If Not Loaded](ScreenShot/df.inspect_Filtered.png)
+
+Now Whole Data Lies Between 1-5.
+
+__*Important__: We Will Be Using Pipeline For Fitting And Prediction!
+
+__Pipeline_Setup__: 
+
+```python
+
+pipe = make_pipeline(
+    StandardScaler(),
+    LogisticRegression(),
+
+```
+
+![Check The ScreenShot Folder, If Not Loaded](ScreenShot/Pipeline.png)
+
+
+
+# Model_Fitting And Prediction
+
+This Model Is Based On LogisticRegression() -Classification
+
+```python
+
+pipe.fit(X,y_train)
+pred = pipe.predict(X)
+
+```
+
+
+# Analize_Prediction
+
+let's Plot With y_train(x-axis) and pred(y-axis)
+
+![Check The ScreenShot Folder, If Not Loaded](ScreenShot/Useless.png)
+
+__Makes No Sense!__ - Right?
+
+Actually We Need The Confusion Matrix:
+
+![Check The ScreenShot Folder, If Not Loaded](ScreenShot/Confution_mat.png)
+
+```python
+
+True Negatives: 352  
+False Positives: 5  
+False Negatives: 8  
+True Positives: 204
+
+```
+
+Let Me Explain -
+
+352 Times My Model Guesses 0 as Actual
+5 Times My Model Guesses 1 but actual was 0
+204 Times My Model Guesses 1 as Actual
+8 Times My Model Guesses 0 but Actual Was 1
+
+# __Model_states__
+
+ __Accuracy = (Correct predictions) / (Total)__
+          = (352 + 204) / 569
+          = 97.7
+
+__Precision = TP / (TP + FP)__
+            = 204 / 209
+            = 97.6%
+           
+__Recall = TP / (TP + FN)__
+         = 204 / 212
+         = 96.2%
+
+__F1 Score = 2 * (Precision * Recall) / (Precision + Recall)__
+           = 2 * (97.6 * 96.2) / (97.6 + 96.2)
+           = 96.9%
+      
+
+
+
+
 
 
 
