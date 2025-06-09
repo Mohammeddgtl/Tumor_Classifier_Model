@@ -205,15 +205,18 @@ True Positives: 204
 Let Me Explain -
 
 352 Times My Model Guesses 0 as Actual
+
 5 Times My Model Guesses 1 but actual was 0
+
 204 Times My Model Guesses 1 as Actual
+
 8 Times My Model Guesses 0 but Actual Was 1
 
 # __Model_states__
 
  __Accuracy = (Correct predictions) / (Total)__
           = (352 + 204) / 569
-          = 97.7
+          = 97.7%
 
 __Precision = TP / (TP + FP)__
             = 204 / 209
